@@ -1,8 +1,8 @@
 [workspace.package]
 license = "MIT-0"
 authors = ["Nikhil Ranjan <nikhil@polkassembly.io>"]
-homepage = "https://paritytech.github.io/polkadot-sdk/"
-repository = "https://github.com/paritytech/polkadot-sdk-parachain-template.git"
+homepage = "https://github.com/niklabh/quadratic-funding-registry"
+repository = "https://github.com/niklabh/quadratic-funding-registry"
 edition = "2021"
 
 [workspace]
