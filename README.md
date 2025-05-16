@@ -246,3 +246,71 @@ the Polkadot SDK documentation resources.
 
 - 👥 Additionally, there are [GitHub issues](https://github.com/paritytech/polkadot-sdk/issues) and
 [Substrate StackExchange](https://substrate.stackexchange.com/).
+
+# Parachain Template
+
+This project is a template for Substrate-based Polkadot parachains built using the [Polkadot SDK](https://github.com/paritytech/polkadot-sdk).
+
+## Pallets
+
+### Project Registry (`pallets/project-registry`)
+
+A FRAME pallet that implements an on-chain registry for funding campaigns. This pallet enables users to create, manage, and participate in funding campaigns with features like soft/hard caps, time-bound campaigns, and automatic finalization.
+
+Key features:
+- Create and manage funding campaigns with metadata and funding goals
+- Time-bound campaign lifecycle (Upcoming → Active → Success/Failed)
+- Contribution handling with fund reservation
+- Automatic campaign finalization
+- Refund processing for failed/cancelled campaigns
+
+[View Project Registry Documentation](pallets/project-registry/README.md)
+
+### Template (`pallets/template`)
+
+A FRAME pallet template that serves as a starting point for developing your own custom pallets.
+
+## Getting Started
+
+Follow these steps to get started with the Parachain Template:
+
+### Build
+
+Use Rust's native build system to build the project:
+
+```bash
+cargo build --release
+```
+
+### Run
+
+Start a collator node:
+
+```bash
+./target/release/parachain-template-node --collator --alice --force-authoring --chain rococo-local --base-path /tmp/parachain/alice --port 40333 --rpc-port 8844
+```
+
+### Test
+
+Run the test suite:
+
+```bash
+cargo test --all
+```
+
+## Documentation
+
+- [Project Registry Pallet](pallets/project-registry/README.md)
+- [Substrate Documentation](https://docs.substrate.io)
+- [Polkadot SDK Documentation](https://github.com/paritytech/polkadot-sdk)
+
+## Contributing
+
+1. Fork the repository
+2. Create a new branch for your changes
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+MIT-0

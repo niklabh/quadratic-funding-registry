@@ -11,8 +11,43 @@
 //! - Cancel campaigns (by owner or root)
 //! - Automatically finalize campaigns and handle refunds
 //! 
-//! The pallet manages campaign lifecycle transitions and ensures proper fund handling
-//! through integration with the Currency trait.
+//! ## Terminology
+//! 
+//! * **Campaign**: A funding initiative with metadata, time bounds, and funding targets.
+//! * **Soft Cap**: Minimum funding goal that must be met for the campaign to succeed.
+//! * **Hard Cap**: Maximum funding that a campaign can accept.
+//! * **Deposit**: Required stake from campaign creators to prevent spam.
+//! * **Metadata**: Campaign information including name, description, and optional link.
+//! 
+//! ## Campaign Lifecycle
+//! 
+//! 1. **Creation**: Owner creates campaign with metadata and funding goals
+//! 2. **Upcoming**: Campaign is created but not yet started
+//! 3. **Active**: Campaign is accepting contributions
+//! 4. **Finalization**: Campaign ends and is marked as Success/Failed
+//! 5. **Refund**: Contributors can claim refunds if campaign failed
+//! 
+//! ## Interface
+//! 
+//! ### Dispatchable Functions
+//! 
+//! * `create_campaign` - Create a new funding campaign
+//! * `update_metadata` - Update campaign metadata (only before start)
+//! * `set_caps` - Modify funding caps (only before start)
+//! * `cancel_campaign` - Cancel a campaign (owner or root only)
+//! * `contribute` - Contribute funds to an active campaign
+//! * `claim_refund` - Claim refund from failed/cancelled campaigns
+//! 
+//! ## Security
+//! 
+//! The pallet implements several security measures:
+//! 
+//! 1. Required deposits for campaign creation
+//! 2. Time-bound operations (updates only before start)
+//! 3. Owner-only campaign management
+//! 4. Fund reservation for contributions
+//! 5. Automatic campaign finalization
+//! 6. Safe math operations using `saturating_*` methods
 
 #![cfg_attr(not(feature = "std"), no_std)]
 
