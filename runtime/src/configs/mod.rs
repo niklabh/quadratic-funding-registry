@@ -315,3 +315,22 @@ impl pallet_parachain_template::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type WeightInfo = pallet_parachain_template::weights::SubstrateWeight<Runtime>;
 }
+
+parameter_types! {
+	pub const MaxNameLen: u32 = 50;
+	pub const MaxDescLen: u32 = 1000;
+	pub const MaxLinkLen: u32 = 200;
+	pub const MaxActiveCampaigns: u32 = 100;
+	pub const CampaignDeposit: Balance = EXISTENTIAL_DEPOSIT * 10;
+}
+
+impl pallet_project_registry::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type Currency = Balances;
+	type Timestamp = Timestamp;
+	type MaxNameLen = MaxNameLen;
+	type MaxDescLen = MaxDescLen;
+	type MaxLinkLen = MaxLinkLen;
+	type MaxActive = MaxActiveCampaigns;
+	type MinimumDeposit = CampaignDeposit;
+}

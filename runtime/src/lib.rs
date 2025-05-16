@@ -307,6 +307,10 @@ mod runtime {
 	// Template
 	#[runtime::pallet_index(50)]
 	pub type TemplatePallet = pallet_parachain_template;
+
+	// Project Registry
+	#[runtime::pallet_index(51)]
+	pub type ProjectRegistry = pallet_project_registry;
 }
 
 #[docify::export(register_validate_block)]
